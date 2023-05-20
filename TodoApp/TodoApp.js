@@ -91,9 +91,9 @@ const sortByPriority = () => {
 const markAsDone = () => {
   Object.prototype.id = prompt("Enter id number: ");
 
-  x = list.findIndex((obj) => obj.id == id);
+  var x = list.findIndex((obj) => obj.id == id);
 
-  list[x].complete = true;
+  list[x] = { complete: true };
 
   listAllTasks();
 };
