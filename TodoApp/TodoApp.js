@@ -1,5 +1,6 @@
-function Todo(id, description, due_date, priority, complete) {
+function Todo(id, taskName, description, due_date, priority, complete) {
   this.id = id;
+  this.taskName = taskName;
   this.description = description;
   this.due_date = due_date;
   this.priority = priority;
@@ -26,15 +27,15 @@ var userInput = prompt(
 var list = new Array();
 
 const addTask = () => {
-  Object.prototype.id = Math.floor(Math.random() * 100);
-
-  Object.prototype.description = prompt("Enter todo description: ");
+  Object.prototype.id = Math.floor(Math.random() * 1000);
+  Object.prototype.taskName = prompt("Enter task name: ");
+  Object.prototype.description = prompt("Enter task description: ");
   Object.prototype.due_date = prompt(
     "Enter the due date. Example format: 2019,1,24  "
   );
   Object.prototype.priority = prompt("Enter the priority number: ");
   Object.prototype.complete = false;
-  var todos = new Todo(id, description, due_date, priority, complete);
+  var todos = new Todo(id, taskName, description, due_date, priority, complete);
 
   list.push(todos);
   console.log(todos);
@@ -55,7 +56,7 @@ const addTask = () => {
 const listAllTasks = () => {
   list.map((list) =>
     console.log(
-      `Task: ${list.id}  description : ${list.description}  due date : ${list.due_date}  priority : ${list.priority} complete: ${list.complete}`
+      `Task: ${list.id}  task name: ${list.taskName}  description : ${list.description}  due date : ${list.due_date}  priority : ${list.priority} complete: ${list.complete}`
     )
   );
   userInput = prompt(
@@ -92,13 +93,13 @@ const markAsDone = () => {
 
   x = list.findIndex((obj) => obj.id == id);
 
-  list[x].complete = "true";
+  list[x].complete = true;
 
   listAllTasks();
 };
 
 const ListCompletedTasks = () => {
-  list = list.filter((x) => x.complete == "true");
+  list = list.filter((x) => x.complete == true);
   listAllTasks();
 };
 const sortByDueDate = () => {
