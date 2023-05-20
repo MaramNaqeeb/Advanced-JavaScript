@@ -75,8 +75,6 @@ const listAllTasks = () => {
 const markAsDone = () => {
   Object.prototype.id = prompt("Enter id number: ");
 
-  // Object.prototype.complete = prompt("Enter true: ");
-
   x = list.findIndex((obj) => obj.id == id);
 
   list[x].complete = "true";
