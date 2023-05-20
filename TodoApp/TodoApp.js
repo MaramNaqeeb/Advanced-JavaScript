@@ -16,7 +16,7 @@ var userInput = prompt(
     1. Add a New Task.
     2. List All Tasks.
     3. Mark a Task as Done.
-    4.List Completed Tasks.
+    4. List Completed Tasks.
     5. Sort the List by Due-Date. 
     6. Sort the List by Priority.
     7. Delete one task by id.
@@ -33,7 +33,7 @@ const addTask = () => {
     "Enter the due date. Example format: 2019,1,24  "
   );
   Object.prototype.priority = prompt("Enter the priority number: ");
-  Object.prototype.complete = prompt("Enter true or false: ");
+  Object.prototype.complete = false;
   var todos = new Todo(id, description, due_date, priority, complete);
 
   list.push(todos);
@@ -44,7 +44,7 @@ const addTask = () => {
     1. Add a New Task.
     2. List All Tasks.
     3. Mark a Task as Done.
-    4.List Completed Tasks.
+    4. List Completed Tasks.
     5. Sort the List by Due-Date. 
     6. Sort the List by Priority.
     7. Delete one task by id.
@@ -64,7 +64,7 @@ const listAllTasks = () => {
     1. Add a New Task.
     2. List All Tasks.
     3. Mark a Task as Done.
-    4.List Completed Tasks.
+    4. List Completed Tasks.
     5. Sort the List by Due-Date. 
     6. Sort the List by Priority.
     7. Delete one task by id.
@@ -75,11 +75,11 @@ const listAllTasks = () => {
 const markAsDone = () => {
   Object.prototype.id = prompt("Enter id number: ");
 
-  Object.prototype.complete = prompt("Enter true: ");
+  // Object.prototype.complete = prompt("Enter true: ");
 
   x = list.findIndex((obj) => obj.id == id);
 
-  list[x].complete = complete;
+  list[x].complete = "true";
 
   listAllTasks();
 };
