@@ -34,7 +34,7 @@ const addTask = () => {
     "Enter the due date. Example format: 2019,1,24  "
   );
   Object.prototype.priority = prompt(
-    "Enter the priority number. Example format: ***  "
+    "Enter stars to set priority. Example format: ***  "
   );
   Object.prototype.complete = false;
   var todos = new Todo(id, taskName, description, due_date, priority, complete);
