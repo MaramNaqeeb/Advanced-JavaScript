@@ -74,6 +74,12 @@ const listAllTasks = () => {
   );
 };
 
+const sortByDueDate = () => {
+  list.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+
+  listAllTasks();
+};
+
 const sortByPriority = () => {
   list.sort((c, d) => {
     if (c.priority > d.priority) {
@@ -102,11 +108,7 @@ const ListCompletedTasks = () => {
   list = list.filter((x) => x.complete == true);
   listAllTasks();
 };
-const sortByDueDate = () => {
-  list.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
 
-  listAllTasks();
-};
 const delteOneTask = () => {
   Object.prototype.id = prompt("Enter id number: ");
   list = Array.from(list);
