@@ -33,7 +33,9 @@ const addTask = () => {
   Object.prototype.due_date = prompt(
     "Enter the due date. Example format: 2019,1,24  "
   );
-  Object.prototype.priority = prompt("Enter the priority number: ");
+  Object.prototype.priority = prompt(
+    "Enter the priority number. Example format: ***  "
+  );
   Object.prototype.complete = false;
   var todos = new Todo(id, taskName, description, due_date, priority, complete);
 
@@ -56,7 +58,7 @@ const addTask = () => {
 const listAllTasks = () => {
   list.map((list) =>
     console.log(
-      `Task: ${list.id}  task name: ${list.taskName}  description : ${list.description}  due date : ${list.due_date}  priority : ${list.priority} complete: ${list.complete}`
+      `Task id: ${list.id}  task name: ${list.taskName}  description: ${list.description}  due date: ${list.due_date}  priority: ${list.priority} complete: ${list.complete}`
     )
   );
   userInput = prompt(
