@@ -6,24 +6,27 @@ function Todo(id, taskName, description, due_date, priority, complete) {
   this.priority = priority;
   this.complete = complete;
 }
+
+const choices = () => {
+  console.log(
+    `    Welcome to Todo App, choose of these numbers: 
+    *********************************************
+    1. Add a New Task.
+    2. List All Tasks.
+    3. Sort the List by Due-Date. 
+    4. Sort the List by Priority.
+    5. Mark a Task as Done.
+    6. List Completed Tasks.
+    7. Delete one task by id.
+    8. Delete the Whole List. 
+    0. Exit the Application.
+    ********************************************** `
+  );
+};
 ("use strict");
 const ps = require("prompt-sync");
 
 const prompt = ps();
-
-var userInput = prompt(
-  `    Welcome to Todo App, choose of these numbers: 
-  *********************************************
-  1. Add a New Task.
-  2. List All Tasks.
-  3. Sort the List by Due-Date. 
-  4. Sort the List by Priority.
-  5. Mark a Task as Done.
-  6. List Completed Tasks.
-  7. Delete one task by id.
-  8. Delete the Whole List. 
-  9. Exit the Application. `
-);
 var list = new Array();
 
 const addTask = () => {
@@ -41,38 +44,12 @@ const addTask = () => {
 
   list.push(todos);
   console.log(todos);
-  userInput = prompt(
-    `    Welcome to Todo App, choose of these numbers: 
-    *********************************************
-    1. Add a New Task.
-    2. List All Tasks.
-    3. Sort the List by Due-Date. 
-    4. Sort the List by Priority.
-    5. Mark a Task as Done.
-    6. List Completed Tasks.
-    7. Delete one task by id.
-    8. Delete the Whole List. 
-    9. Exit the Application. `
-  );
 };
 const listAllTasks = () => {
   list.map((list) =>
     console.log(
       `Task id: ${list.id}  task name: ${list.taskName}  description: ${list.description}  due date: ${list.due_date}  priority: ${list.priority} complete: ${list.complete}`
     )
-  );
-  userInput = prompt(
-    `    Welcome to Todo App, choose of these numbers: 
-    *********************************************
-    1. Add a New Task.
-    2. List All Tasks.
-    3. Sort the List by Due-Date. 
-    4. Sort the List by Priority.
-    5. Mark a Task as Done.
-    6. List Completed Tasks.
-    7. Delete one task by id.
-    8. Delete the Whole List. 
-    9. Exit the Application. `
   );
 };
 
@@ -126,30 +103,52 @@ const deleteAllTaskes = () => {
   listAllTasks();
 };
 
-while (userInput == "1") {
-  addTask();
+const whileLoop = () => {
+  while (true) {
+    choices();
+    const userInput = prompt(`Choose a Number `);
+    switch (userInput) {
+      case "1": {
+        addTask();
+        break;
+      }
+      case "2": {
+        listAllTasks();
+        break;
+      }
+      case "3": {
+        markAsDone();
+        break;
+      }
+      case "4": {
+        ListCompletedTasks();
+        break;
+      }
 
-  if (userInput == "2") {
-    listAllTasks();
-  }
+      case "5": {
+        sortByDueDate();
+        break;
+      }
 
-  if (userInput == "3") {
-    sortByDueDate();
-  }
+      case "6": {
+        sortByPriority();
+        break;
+      }
 
-  if (userInput == "4") {
-    sortByPriority();
+      case "7": {
+        delteOneTask();
+        break;
+      }
+      case "8": {
+        deleteAllTaskes();
+        break;
+      }
+      case "0": {
+        process.exit();
+      }
+      default:
+        break;
+    }
   }
-  if (userInput == "5") {
-    markAsDone();
-  }
-  if (userInput == "6") {
-    ListCompletedTasks();
-  }
-  if (userInput == "7") {
-    delteOneTask();
-  }
-  if (userInput == "8") {
-    deleteAllTaskes();
-  }
-}
+};
+whileLoop();
